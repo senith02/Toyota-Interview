@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import StatusBadge from './StatusBadge';
 
 function PartsTable({ parts, onEdit, onDelete, isLink = false }) {
   return (
@@ -29,9 +28,7 @@ function PartsTable({ parts, onEdit, onDelete, isLink = false }) {
                 <td>{part.Brand}</td>
                 <td>{part.Quantity}</td>
                 <td>${part.Price ? part.Price.toFixed(2) : '0.00'}</td>
-                <td>
-                  <StatusBadge status={part.status} />
-                </td>
+                <td>{part.Status}</td>
                 <td className="actions">
                   {isLink ? (
                     <Link to={`/parts/edit/${part.ID}`} className="btn-edit">Edit</Link>
