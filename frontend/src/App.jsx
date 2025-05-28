@@ -36,6 +36,7 @@ function App() {
       setLoading(true)
       const response = await axios.get('http://localhost:8080/parts')
       setParts(response.data)
+      console.log('Fetched parts:', response.data)
       setError(null)
     } catch (err) {
       console.error('Error fetching parts:', err)

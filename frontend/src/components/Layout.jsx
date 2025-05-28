@@ -10,7 +10,7 @@ function Layout() {
         <Outlet />
       </main>
       <footer>
-        <p>&copy; {new Date().getFullYear()} Toyota Parts Management</p>
+        <p>&copy; {new Date().getFullYear()} Vehicle Parts Inventory System</p>
       </footer>
     </div>
   );

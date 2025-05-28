@@ -12,9 +12,18 @@ function EditPartPage({ onUpdate, error }) {
   
   useEffect(() => {
     const fetchPart = async () => {
+      // Check if id is valid before making the request
+      if (!id) {
+        setFetchError('Invalid part ID');
+        setLoading(false);
+        return;
+      }
+      
       try {
         setLoading(true);
+        console.log(`Fetching part with ID: ${id}`);
         const response = await axios.get(`http://localhost:8080/parts/${id}`);
+        console.log('Fetched part data:', response.data);
         setPart(response.data);
         setFetchError(null);
       } catch (err) {
@@ -60,12 +69,14 @@ function EditPartPage({ onUpdate, error }) {
       
       {error && <div className="error">{error}</div>}
       
-      <EditPartForm
-        part={part}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        onCancel={() => navigate('/')}
-      />
+      {part && (
+        <EditPartForm
+          part={part}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          onCancel={() => navigate('/')}
+        />
+      )}
     </div>
   );
 }

@@ -22,8 +22,8 @@ function PartsTable({ parts, onEdit, onDelete, isLink = false }) {
         <tbody>
           {parts.length > 0 ? (
             parts.map(part => (
-              <tr key={part.id}>
-                <td>{part.id}</td>
+              <tr key={part.ID}>
+                <td>{part.ID}</td>
                 <td>{part.Name}</td>
                 <td>{part.PartType}</td>
                 <td>{part.Brand}</td>
@@ -34,7 +34,7 @@ function PartsTable({ parts, onEdit, onDelete, isLink = false }) {
                 </td>
                 <td className="actions">
                   {isLink ? (
-                    <Link to={onEdit(part)} className="btn-edit">Edit</Link>
+                    <Link to={`/parts/edit/${part.id}`} className="btn-edit">Edit</Link>
                   ) : (
                     <button onClick={() => onEdit(part)} className="btn-edit">Edit</button>
                   )}

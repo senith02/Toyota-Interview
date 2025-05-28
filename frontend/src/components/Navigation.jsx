@@ -5,7 +5,7 @@ function Navigation() {
   return (
     <nav className="main-nav">
       <div className="logo">
-        <NavLink to="/" end>Toyota Parts Management</NavLink>
+        <NavLink to="/" end>Vehicle Inventory Management System</NavLink>
       </div>
       <ul className="nav-links">
         <li><NavLink to="/" end>Parts List</NavLink></li>
