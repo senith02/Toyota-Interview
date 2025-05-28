@@ -12,6 +12,11 @@ function PartsListPage({ parts, onDelete, loading, error }) {
     part.Brand?.toLowerCase().includes(searchTerm.toLowerCase())
   );
   
+  // Log parts data to debug IDs
+  if (parts.length > 0) {
+    console.log('First part data:', parts[0]);
+  }
+  
   if (loading) {
     return <div>Loading parts...</div>;
   }
@@ -37,7 +42,6 @@ function PartsListPage({ parts, onDelete, loading, error }) {
       
       <PartsTable 
         parts={filteredParts} 
-        onEdit={(part) => `/parts/edit/${part.id}`} 
         onDelete={onDelete}
         isLink={true}
       />

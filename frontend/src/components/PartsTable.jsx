@@ -34,11 +34,11 @@ function PartsTable({ parts, onEdit, onDelete, isLink = false }) {
                 </td>
                 <td className="actions">
                   {isLink ? (
-                    <Link to={`/parts/edit/${part.id}`} className="btn-edit">Edit</Link>
+                    <Link to={`/parts/edit/${part.ID}`} className="btn-edit">Edit</Link>
                   ) : (
                     <button onClick={() => onEdit(part)} className="btn-edit">Edit</button>
                   )}
-                  <button onClick={() => onDelete(part.id)} className="btn-delete">Delete</button>
+                  <button onClick={() => onDelete(part.ID)} className="btn-delete">Delete</button>
                 </td>
               </tr>
             ))

@@ -33,7 +33,8 @@ app.get('/parts', (req, res) => {
 // Get part by ID
 app.get('/parts/:id', (req, res) => {
     const partId = req.params.id;
-    db.query('SELECT * FROM parts WHERE id = ?', [partId], (err, results) => {
+    // Try with uppercase ID field
+    db.query('SELECT * FROM parts WHERE ID = ?', [partId], (err, results) => {
       if (err) {
         console.error('Error fetching part:', err);
         return res.status(500).json({ error: 'Internal Server Error' });
@@ -49,7 +50,7 @@ app.get('/parts/:id', (req, res) => {
 app.put('/parts/:id', (req, res) => {
     const partId = req.params.id;
     const { Name, PartType, Brand, Quantity, Price, status } = req.body;
-    const sql = 'UPDATE parts SET Name=?, PartType=?, Brand=?, Quantity=?, Price=?, status=? WHERE id=?';
+    const sql = 'UPDATE parts SET Name=?, PartType=?, Brand=?, Quantity=?, Price=?, status=? WHERE ID=?';
     
     db.query(sql, [Name, PartType, Brand, Quantity, Price, status, partId], (err, result) => {
       if (err) {
@@ -67,7 +68,7 @@ app.put('/parts/:id', (req, res) => {
 app.delete('/parts/:id', (req, res) => {
     const partId = req.params.id;
     
-    db.query('DELETE FROM parts WHERE id = ?', [partId], (err, result) => {
+    db.query('DELETE FROM parts WHERE ID = ?', [partId], (err, result) => {
       if (err) {
         console.error('Error deleting part:', err);
         return res.status(500).json({ error: 'Internal Server Error' });
